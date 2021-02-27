@@ -46,6 +46,7 @@ Resources:
         CWSchedule:
           Type: Schedule
           Properties:
+            # Syntax for this can be found here: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
             Schedule: cron(0/5 * * * ? *)
             Name: KasaElecCurrentReportSchedule
             Description: execution schedule for the current electricity report
@@ -67,6 +68,7 @@ Resources:
         CWSchedule:
           Type: Schedule
           Properties:
+            # Syntax for this can be found here: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
             Schedule: cron(0 0 * * ? *)
             Name: KasaElecDailyReportSchedule
             Description: execution schedule for the daily electricity report
