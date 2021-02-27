@@ -3,7 +3,7 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   myb-kasa-electricity-reporter
 
-  Serverless capabilities for managing aspects of a mining business
+  Serverless capabilities for capturing and monitoring TP-Link Kasa smart plug electricity data
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -48,7 +48,7 @@ Resources:
           Properties:
             Schedule: cron(0/5 * * * ? *)
             Name: KasaElecCurrentReportSchedule
-            Description: execution schedule for the current mining electricity report
+            Description: execution schedule for the current electricity report
             Enabled: True
   KasaDailyElecFn:
     Type: AWS::Serverless::Function 
@@ -69,5 +69,5 @@ Resources:
           Properties:
             Schedule: cron(0 0 * * ? *)
             Name: KasaElecDailyReportSchedule
-            Description: execution schedule for the daily mining electricity report
+            Description: execution schedule for the daily electricity report
             Enabled: True
