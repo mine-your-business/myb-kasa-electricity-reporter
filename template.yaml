@@ -1,0 +1,73 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  myb-kasa-electricity-reporter
+
+  Serverless capabilities for managing aspects of a mining business
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+    Environment:
+      Variables:
+        # If RUN_MODE is "test", all functions supporting the test mode will run in test mode
+        RUN_MODE: "production"
+        # If VERBOSE_OUTPUT is "true", all functions supporting the setting will print out verbosely
+        # be aware that this could include secrets and sensitive information
+        # VERBOSE_OUTPUT: "true"
+        DEVICES_LIKE: "miner"
+        # Visit https://www.tplinkcloud.com/ to register an account
+        # Note that the API is not officially supported for custom use
+        # Username is just an email
+        TPLINK_KASA_USERNAME: '{{resolve:ssm:/tplink_kasa/username:1}}'
+        TPLINK_KASA_PASSWORD: '{{resolve:ssm:/tplink_kasa/password:1}}'
+        TPLINK_KASA_API_URL: https://wap.tplinkcloud.com
+        NEWRELIC_ACCOUNT_ID: '{{resolve:ssm:/newrelic/account_id:1}}'
+        NEWRELIC_INSIGHTS_INSERT_API_KEY: '{{resolve:ssm:/newrelic/insights/insert_api_key:1}}'
+        NEWRELIC_INSIGHTS_QUERY_API_URL: https://insights-api.newrelic.com
+        NEWRELIC_INSIGHTS_INSERT_API_URL: https://insights-collector.newrelic.com
+
+Resources:
+  # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+  KasaCurrentElecFn:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: kasa_electricity_reporter_function
+      Handler: kasa_electricity_reporter.app.lambda_handler
+      Runtime: python3.8
+      # TODO - this takes a really long time, need to use
+      # async processing
+      Timeout: 30
+      Environment:
+        Variables:
+          MEASURE_CADENCE: "current"
+      Events:
+        CWSchedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0/5 * * * ? *)
+            Name: KasaElecCurrentReportSchedule
+            Description: execution schedule for the current mining electricity report
+            Enabled: True
+  KasaDailyElecFn:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: kasa_electricity_reporter_function
+      Handler: kasa_electricity_reporter.app.lambda_handler
+      Runtime: python3.8
+      Timeout: 30
+      Environment:
+        Variables:
+          MEASURE_CADENCE: "day"
+          # This measures data starting from two days ago. This makes sure the
+          # data has "settled" and doesn't have any weird timezone issues
+          MEASURE_OFFSET: "2"
+      Events:
+        CWSchedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 0 * * ? *)
+            Name: KasaElecDailyReportSchedule
+            Description: execution schedule for the daily mining electricity report
+            Enabled: True

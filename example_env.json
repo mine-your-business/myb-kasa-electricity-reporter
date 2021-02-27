@@ -1,0 +1,16 @@
+{
+  "KasaCurrentElecFn": {
+    "RUN_MODE": "test",
+    "TPLINK_KASA_USERNAME": "",
+    "TPLINK_KASA_PASSWORD": "",
+    "NEWRELIC_ACCOUNT_ID": "",
+    "NEWRELIC_INSIGHTS_INSERT_API_KEY": ""
+  },
+  "KasaDailyElecFn": {
+    "RUN_MODE": "test",
+    "TPLINK_KASA_USERNAME": "",
+    "TPLINK_KASA_PASSWORD": "",
+    "NEWRELIC_ACCOUNT_ID": "",
+    "NEWRELIC_INSIGHTS_INSERT_API_KEY": ""
+  }
+}
