@@ -32,7 +32,7 @@ You will need a TP-Link Kasa account so that you can provide credentials. These 
 
 This project reports captured electricity data form the Kasa smart plugs to New Relic. New Relic offers a free tier with 1-months worth of "live" data storage. Anything reported more than a month ago will be deleted so consider other options for permanent storage. To sign up for a free account and get credentials for New Relic, go [here](https://newrelic.com/).
 
-Once you have an account, if you visit [this page](https://insights.newrelic.com/accounts/) you will see your account ID in the URL. Here you can also create an Insert API Key which will be necessary to report to New Relic. To do this, you will need to click `Manage data` on the page under `Administration` and then navigate to the `API Keys` tab in that page. There you should see instructions on creating an API Key.
+Once you have an account, if you visit [this page](https://insights.newrelic.com/) you will see your account ID in the URL. Here you can also create an Insert API Key which will be necessary to report to New Relic. To do this, you will need to click `Manage data` on the page under `Administration` and then navigate to the `API Keys` tab in that page. There you should see instructions on creating an API Key.
 
 ### Events
 The following events are reported by this project to New Relic
