@@ -3,7 +3,7 @@ version = 0.1
 [default.deploy]
 [default.deploy.parameters]
 stack_name = "myb-kasa-electricity-reporter"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1wey34ou6ahuw"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1234example"
 s3_prefix = "myb-kasa-electricity-reporter"
 region = "us-west-2"
 confirm_changeset = true
