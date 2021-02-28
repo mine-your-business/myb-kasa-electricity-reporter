@@ -2,19 +2,12 @@
 
 A serverless AWS-hosted automatic TP-Link Kasa smart plug electricity reporter for monitoring.
 
-This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. 
+This project contains source code and supporting files for a serverless application that you can deploy with the [AWS SAM CLI](#aws-sam-cli). 
 
 The [`template.yaml`](template.yaml) is a template that defines the application's AWS resources and configurations for those resources. Pay special attention to this file for configuring the project.
 
-If you prefer to use an integrated development environment (IDE) to build and test the application, you can use the AWS Toolkit.  
-The AWS Toolkit is an open source plug-in for popular IDEs that uses the SAM CLI to build and deploy serverless applications on AWS. The AWS Toolkit also adds a simplified step-through debugging experience for Lambda function code. See the following links to get started.
-
-* [PyCharm](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [IntelliJ](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [VS Code](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/welcome.html)
-* [Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/welcome.html)
-
 ## Prerequisites
+
 ### AWS SAM CLI 
 
 The Serverless Application Model Command Line Interface (SAM CLI) is an extension of the AWS CLI that adds functionality for building and testing Lambda applications. It uses Docker to run the functions in an Amazon Linux environment that matches Lambda.
