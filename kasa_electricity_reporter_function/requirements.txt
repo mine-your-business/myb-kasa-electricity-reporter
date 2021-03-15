@@ -1,3 +1,3 @@
 # For Tp-link Kasa
-tplink-cloud-api==1.2.1
+tplink-cloud-api==2.1.2
 myb-newrelic-api>=1.0.0
