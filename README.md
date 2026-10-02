@@ -1,5 +1,9 @@
 # myb-kasa-electricity-reporter
 
+> [!NOTE]
+> **Archived.** No longer maintained.
+
+
 A serverless AWS-hosted automatic TP-Link Kasa smart plug electricity reporter for monitoring.
 
 This project contains source code and supporting files for a serverless application that you can deploy with the [AWS SAM CLI](#aws-sam-cli). 
